@@ -1,3 +1,14 @@
-img#octopus {
-	margin: 200px 500px;	
+body {
+	position: relative;
+}
+
+#octopus {
+	position: absolute;
+	margin: 200px 500px;
+}
+
+#glasses {
+	position: absolute;
+	top: 300px;
+	left: 540px;
 }
