@@ -1,0 +1,40 @@
+Common Task- Laundry
+
+- Go to bedroom.
+- Turn left.
+- Go straight to Laundry hamper.
+- If laundry hamper is full 
+	pick up hamper.
+		
+	- Go backward to door.
+	- Go right to hallway wall.
+	- Go straight to end of hall where washer and dryer are.
+	- Dump laundry out.
+	- sort white colors from dark colors.
+	- If white colors are the majority
+		do white load first.
+		otherwise do dark load.
+	- Open washer door.
+	- Pick up correct load.
+	- Put clothes into washer.
+	- Close door.
+	- Open detergent door.
+	- If correct load is white
+		pick up bleach
+		open cover 
+		pour bleach into cover until first line
+		pour full cover into detergent door
+	otherwise 
+		pick up regular detergent 
+		open cover 
+		pour detergent into cover until first line
+		pour full cover into detergent door
+	- Close detergent door.
+	- If correct load is white 
+		set knob to whites
+	otherwise 
+		set knob to darks
+	-Press start button.
+otherwise leave it.
+
+
