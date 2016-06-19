@@ -4,9 +4,15 @@
 
 def encrypt(password)
 	index = 0
+	# p password.length
 	while index < password.length
-
+		# p password.length
 		password[index] = password[index].next
+		# p password[index]
+		# if password[index] == "aa"
+		# 	password[index] = "a"
+		# end
+
 
 		index += 1
 	end
@@ -81,3 +87,30 @@ p encrypt("zed")
 p decrypt("bcd")
 p decrypt("afe")
 
+p decrypt(encrypt("swordfish"))
+
+# ask user if he would like to encrypt or decrypt.
+# response
+# What is the password?
+# password
+# if "encrypt"
+# 	puts encrypt(password)
+# end
+
+# if "decrypt" 
+# 	puts decrypt(password)
+# end
+puts "would you like to encrypt or decrypt you password?"
+
+encrypt_decrypt_response = gets.chomp
+
+puts "What is the password?"
+password_response = gets.chomp
+
+if encrypt_decrypt_response == "encrypt"
+	puts "Your encrypted password is: #{encrypt(password_response)}."
+end
+
+if encrypt_decrypt_response == "decrypt"
+	puts " Your decrypted password is: #{decrypt(password_response)}."
+end
