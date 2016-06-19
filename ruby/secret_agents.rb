@@ -1,3 +1,26 @@
+# create loop
+# 1. find letter in password
+# 2. make that letter go next.
+
+def encrypt(password)
+	index = 0
+	while index < password.length
+
+		password[index] = password[index].next
+
+		index += 1
+	end
+return password
+
+end
+
+p encrypt("hello")
+
+
+
+
+
+
 # def encrypt(password)
 #   for x in 0...password.length
 #     password[x] = password[x].next
@@ -11,6 +34,10 @@
 #   alphabet = "abcdefghijklmnopqrstuvwxyz"
 #   password[0] = alphabet[alphabet[password[0]]-1]
 # end
+
+
+
+
 
 # decrypt("ifmmp")
 
@@ -26,11 +53,12 @@
 	# 7. set 
 	# add one to index
 #end
+
 def decrypt(encrypted_password)
 index = 0
 
-p encrypted_password
-p encrypted_password.length
+# p encrypted_password
+# p encrypted_password.length
 
 while index < encrypted_password.length
 
@@ -43,7 +71,7 @@ while index < encrypted_password.length
 	
 	index += 1
 end
-puts encrypted_password
+return encrypted_password
 end
 
 p decrypt("ifmmp")
