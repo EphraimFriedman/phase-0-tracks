@@ -1,18 +1,14 @@
-# create loop
-# 1. find letter in password
-# 2. make that letter go next.
-
 def encrypt(password)
 	index = 0
 	# p password.length
 	while index < password.length
-		# p password.length
-		password[index] = password[index].next
-		# p password[index]
-		# if password[index] == "aa"
-		# 	password[index] = "a"
-		# end
 
+		if password[index] == "z"
+			password[index] = "a"
+		else	
+		password[index] = password[index].next
+
+		end
 
 		index += 1
 	end
@@ -26,7 +22,7 @@ end
 
 
 
-
+# Eitan Greene's original code
 # def encrypt(password)
 #   for x in 0...password.length
 #     password[x] = password[x].next
@@ -82,12 +78,12 @@ end
 
 # p decrypt("ifmmp")
 
-p encrypt("abc")
-p encrypt("zed")
-p decrypt("bcd")
-p decrypt("afe")
+# p encrypt("abc")
+#p encrypt("zed")
+# p decrypt("bcd")
+# p decrypt("afe")
 
-p decrypt(encrypt("swordfish"))
+# p decrypt(encrypt("swordfish"))
 
 # ask user if he would like to encrypt or decrypt.
 # response
