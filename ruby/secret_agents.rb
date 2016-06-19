@@ -14,7 +14,7 @@ return password
 
 end
 
-p encrypt("hello")
+# p encrypt("hello")
 
 
 
@@ -74,6 +74,10 @@ end
 return encrypted_password
 end
 
-p decrypt("ifmmp")
+# p decrypt("ifmmp")
 
+p encrypt("abc")
+p encrypt("zed")
+p decrypt("bcd")
+p decrypt("afe")
 
