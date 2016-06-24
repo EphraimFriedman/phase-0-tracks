@@ -1,7 +1,7 @@
 menu = { 
-	appitizers: { 
-		appitizer_dishes: ["soup", "slider", "salad"],
-		:appitizer_prices => {
+	appetizers: { 
+		appetizer_dishes: ["soup", "slider", "salad"],
+		:appetizer_prices => {
 			soups: 8, 
 			sliders: 10,
 			salads: 11,
@@ -38,3 +38,46 @@ menu = {
 }
 
 p menu
+
+# print chichen from entree dishes
+puts "printing chicken from entree menu."
+p menu[:entrees][:entree_dishes][0]
+
+# change price of ice cream
+puts "Before change:"
+
+p menu[:desserts][:dessert_prices][:ice_cream]
+
+puts "After change:"
+
+menu[:desserts][:dessert_prices][:ice_cream] = 5
+p menu[:desserts][:dessert_prices][:ice_cream]
+
+# delete whiskey sour from cocktail menu.
+puts "Before change:"
+
+p menu[:drinks][:coctails]
+
+menu[:drinks][:coctails].delete_at(1)
+puts "after change:"
+p menu[:drinks][:coctails]
+
+# add appetizer dish
+puts "Before change:"
+p menu[:appetizers][:appetizer_dishes]
+
+menu[:appetizers][:appetizer_dishes].push("garlic_bread")
+
+puts "After change:"
+p menu[:appetizers][:appetizer_dishes]
+
+
+
+
+
+
+
+
+
+
+
