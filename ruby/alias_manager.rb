@@ -1,58 +1,24 @@
-# name (e.g., "Felicia Torres") and creates a fake name with it 
-# by doing the following:
-
-# Swapping the first and last name.
-# Changing all of the vowels (a, e, i, o, or u) to the next vowel 
-# in 'aeiou', and all of the consonants 
-# (everything else besides the vowels) 
-# to the next consonant in the alphabet. 
-# So 'a' would become 'e', 'u' would become 'a',
-#  and 'd' would become 'f'.
-
 # write method to change vowels
-# create arry of vowels
-# loop through string
-# if the tetter is a vowel 
-# 	find that letter in the vowel array and go next
+# create vowel hash
+# find vowel in hash and save as new vowel
 
-def change_vowel(vowel) #word 
-	# word_array = word.split("")
-	# p word_array
+def change_vowel(vowel) 
 	vowel_list = {"a" => "e", "e" => "i", "i" => "o", "o" => "u", "u" => "a"}
-	# vowel.map! do |letter|
-		# p letter
-		# p vowel_list[letter] 
-		# if vowel_list.has_key?(letter)
-			new_vowel = vowel_list[vowel] 
-			# p new_vowel
-		# else 
-		# 	letter
-		# end
-	# end
-	# word_array.join('')
+				new_vowel = vowel_list[vowel] 
 end
 
-# p change_vowel("a")
-# p change_vowel("e")
-# p change_vowel("i")
-# p change_vowel("o")
-# p change_vowel("u")
-
-
+# create method to change name
 # loop through name
 # if letter is a vowel
 # 	change vowel
-# otherwise 
-# 	next letter
+# otherwise if letter is z change to b
+# otherwise change to next letter
 
 def encrypt_name(agents_name)
 	name_array = agents_name.split("")
-	# p name_array
 	vowels = "aeiou"
-	# p vowels
 	name_array.map! do |letter|
 		if vowels.include?(letter)
-			# p vowels.include?(letter)
 			change_vowel(letter)
 		elsif letter == "z"
 			new_letter = "b"
@@ -67,7 +33,7 @@ def encrypt_name(agents_name)
 	name_array.join('').capitalize
 end
 
-# p encrypt_name("felicia")
+# Driver code
 
 
 # get first name
@@ -77,18 +43,45 @@ end
 # make first name new last name
 # make last name new first name
 
-first_name = "Felicia"
-last_name = "Torres" 
 
-new_first_name = last_name.downcase
-new_last_name = first_name.downcase
+list_of_alias_names = {}
 
-enctpyed_fist_name = encrypt_name(new_first_name)
-enctpyed_last_name = encrypt_name(new_last_name)
+loop do
+	puts "Welcome to the encryption program! Press 'enter' to continue. (if you would like to exit type 'quit')"
+	response = gets.chomp
+	if response == "quit"
+		puts "Thank you for using our encryption program!"
+	break
+	end
 
-agents_alias = enctpyed_fist_name + " " + enctpyed_last_name
+	puts " what is your first name?"
+	first_name = gets.chomp
 
-p agents_alias
+	puts "What is your last name?"
+	last_name = gets.chomp 
+
+	new_first_name = last_name.downcase
+	new_last_name = first_name.downcase
+
+	enctpyed_fist_name = encrypt_name(new_first_name)
+	enctpyed_last_name = encrypt_name(new_last_name)
+
+	agents_alias = enctpyed_fist_name + " " + enctpyed_last_name
+
+
+
+list_of_alias_names[first_name + " " + last_name] = agents_alias
+
+p list_of_alias_names
+
+	puts "Your new alias is: #{agents_alias}" 
+end
+
+puts "List of agent name:"
+list_of_alias_names.each do |real_name, alias_name|
+	puts "#{alias_name}'s true name is #{real_name}."
+	end 
+
 
 
 
