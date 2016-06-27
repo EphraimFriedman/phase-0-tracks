@@ -72,7 +72,7 @@ loop do
 
 list_of_alias_names[first_name + " " + last_name] = agents_alias
 
-p list_of_alias_names
+# p list_of_alias_names
 
 	puts "Your new alias is: #{agents_alias}" 
 end
