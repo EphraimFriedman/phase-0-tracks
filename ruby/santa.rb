@@ -25,9 +25,29 @@ class Santa
 		puts "Age is #{@age}"
 	end
 
+	def celebrate_birthday
+		@age += 1	
+	end
+
+	def get_mad_at(name)
+		@reindeer_ranking.delete(name)
+		@reindeer_ranking.push(name) 		
+	end
+
+	def gender= (new_gender)
+		@gender = new_gender
+	end
+
+	def age
+		@age
+	end
+
+	def ethnicity
+		@ethnicity
+	end
 end
 
-# harry = Santa.new
+# harry = Santa.new("male", "Green")
 
 # harry.speak
 
@@ -43,7 +63,27 @@ santas << Santa.new("gender fluid", "Mystical Creature (unicorn)")
 santas << Santa.new("N/A", "N/A")
 santas << Santa.new("male", "Caucasian")
 
-p santas[2]
+# p santas[2]
+
+# p harry
+
+p santas[0].celebrate_birthday
+
+p santas[0].get_mad_at("Vixen")
+
+p santas[0].gender = ("female")
+
+# p harry
+
+p santas[0].age
+
+p santas[0].ethnicity
+
+p santas[2].about
+
+p santas[0].about
+
+
 
 
 
