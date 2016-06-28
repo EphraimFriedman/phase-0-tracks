@@ -6,20 +6,6 @@
 #   # print the list to the console [can you use one of your other methods here?]
 # # output: [what data type goes here, array or hash?]
 
-def create_list(list)
-  shopping_list = {}
-  grocery_array = list.split(" ")
-  quantity = 1
-  grocery_array.map do |item|
-    shopping_list[item] = quantity
-  end
-  shopping_list
-end
-
-
-
-# p grocery_list
-
 
 # # Method to add an item to a list
 # # input: item name and optional quantity
@@ -28,29 +14,12 @@ end
 # # output:
 #     hash 
 
-def add_item(list, item_name, quantity = 1)
-  list[item_name] = quantity 
-  list
-end
-
-# p add_item(grocery_list, "oranges")
-# p grocery_list
-
-
-
 # # Method to remove an item from the list
 # # input: the item to be removed
 # # steps: find the item in the hash 
 #     remove item
 # # output: 
 #     hash
-
-def remove_item(list, item_name)
-  list.delete(item_name)
-  list
-end
-
-# p remove_item(grocery_list, "apples")
 
 # # Method to update the quantity of an item
 # # input: the item name and an integer
@@ -59,14 +28,6 @@ end
 # # output:
 #     hash
 
-def add_quantity(list, item_name, quantity)
-  list[item_name] = quantity
-  list
-end
-
-# p add_quantity(grocery_list, "carrots", 5)
-
-
 # # Method to print a list and make it look pretty
 # # input: A list
 # # steps: print a header
@@ -74,19 +35,71 @@ end
 # # output:
 #   a list in a sentence form
 
+def create_list(list)
+  shopping_list = {}
+  grocery_array = list.split(" ")
+  quantity = 1
+  grocery_array.map do |item|
+    shopping_list[item] = quantity
+  end
+  print_list(shopping_list)
+  shopping_list
+end
+
+def add_item(list, item_name, quantity = 1)
+  list[item_name] = quantity 
+  list
+end
+
+def remove_item(list, item_name)
+  list.delete(item_name)
+  list
+end
+
+def add_quantity(list, item_name, quantity)
+  list[item_name] = quantity
+  list
+end
+
 def print_list(list)
   puts "Shopping List"
+  puts "----------"
   list.each do |item, qty|
     puts "#{item}: #{qty}"
   end
+  puts "----------"
+  list
 end
+
+
+# Driver Code
+
+# groceries = "carrots apples cereal pizza" 
+ 
+# grocery_list = create_list(groceries)
+
+# p grocery_list
+
+# p add_item(grocery_list, "oranges")
+
+# p remove_item(grocery_list, "apples")
+
+# p add_quantity(grocery_list, "carrots", 5)
 
 # print_list(grocery_list)
 
+# Test
 
 groceries = "carrots apples cereal pizza" 
-
+ 
 grocery_list = create_list(groceries)
+
+
+
+
+
+
+
 
 
 
