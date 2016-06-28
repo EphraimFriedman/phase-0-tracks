@@ -6,10 +6,8 @@ class Santa
 		puts "initializing Santa instance..."
 		@gender = gender
 		@ethnicity = ethnicity
-		@reindeer_ranking = ["Rudolph", "Dasher", "Dancer",
-		 "Prancer", "Vixen", "Comet", "Cupid",
-		  "Donner", "Blitzen"]
-		@age = 0
+		@reindeer_ranking = ["Rudolph", "Dasher", "Dancer", "Prancer", "Vixen", "Comet", "Cupid", "Donner", "Blitzen"]
+		@age = rand(140)
 	end
 
 	def speak
@@ -18,13 +16,6 @@ class Santa
 
 	def eat_milk_and_cookies(cookie_type)
 		puts "That was a good #{cookie_type}"
-	end
-
-	def about
-		puts "Gender is: #{@gender}"
-		puts "Ethnicity is: #{@ethnicity}"
-		puts "reindeer ranking is: #{@reindeer_ranking}"
-		puts "Age is #{@age}"
 	end
 
 	def celebrate_birthday
@@ -36,54 +27,38 @@ class Santa
 		@reindeer_ranking.push(name) 		
 	end
 
-	# def gender= (new_gender)
-	# 	@gender = new_gender
-	# end
-
-	# def age
-	# 	@age
-	# end
-
-	# def ethnicity
-	# 	@ethnicity
-	# end
+	
 end
 
-# harry = Santa.new("male", "Green")
+# create loop to create many santas
+# 	give random gender and ethnicity
+# 	set age in initialize to random number
+# 	print out santas gender
+# 	print out santas ethnicity
+# 	print out santas age
 
-# harry.speak
+genders = ["agender", "female", "bigender", "male", "female", "gender fluid", "N/A"]
+ethnicities = ["black", "Latino", "white", "Japanese-African", "prefer not to say", "Mystical Creature (unicorn)", "N/A"]
 
-# harry.eat_milk_and_cookies("chocolate chip")
 
-santas = []
-santas << Santa.new("agender", "black")
-santas << Santa.new("female", "Latino")
-santas << Santa.new("bigender", "white")
-santas << Santa.new("male", "Japanese")
-santas << Santa.new("female", "prefer not to say")
-santas << Santa.new("gender fluid", "Mystical Creature (unicorn)")
-santas << Santa.new("N/A", "N/A")
-santas << Santa.new("male", "Caucasian")
+100.times do |number|
+	new_santa = Santa.new(genders.sample, ethnicities.sample)
+	puts "new_santa_#{number + 1}:" 
+	puts "Gender: #{new_santa.gender}" 
+	puts "Ethnicity: #{new_santa.ethnicity}"
+	puts "Age: #{new_santa.age}"
+end
 
-# p santas[2]
 
-# p harry
 
-p santas[0].celebrate_birthday
 
-p santas[0].get_mad_at("Vixen")
 
-p santas[0].gender = ("female")
 
-# p harry
 
-p santas[0].age
 
-p santas[0].ethnicity
 
-p santas[2].about
 
-p santas[0].about
+
 
 
 
