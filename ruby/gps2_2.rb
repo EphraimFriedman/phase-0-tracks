@@ -56,16 +56,16 @@ def remove_item(list, item_name)
   list
 end
 
-def add_quantity(list, item_name, quantity)
+def update_quantity(list, item_name, quantity)
   list[item_name] = quantity
   list
 end
 
 def print_list(list)
-  puts "Shopping List"
+  puts "*Shopping List*"
   puts "----------"
   list.each do |item, qty|
-    puts "#{item}: #{qty}"
+    puts "* #{item}: #{qty}"
   end
   puts "----------"
   list
@@ -84,15 +84,30 @@ end
 
 # p remove_item(grocery_list, "apples")
 
-# p add_quantity(grocery_list, "carrots", 5)
+# p update_quantity(grocery_list, "carrots", 5)
 
 # print_list(grocery_list)
 
 # Test
-
-groceries = "carrots apples cereal pizza" 
  
-grocery_list = create_list(groceries)
+grocery_list = create_list("carrots apples cereal pizza")
+
+p add_item(grocery_list, "Lemonade", 2)
+
+p add_item(grocery_list, "Tomatoes", 3)
+
+p add_item(grocery_list, "Onions", 1)
+
+p add_item(grocery_list, "Ice Cream", 4)
+
+p remove_item(grocery_list, "Lemonade")
+
+p update_quantity(grocery_list, "Ice Cream", 1)
+
+print_list(grocery_list)
+
+
+
 
 
 
