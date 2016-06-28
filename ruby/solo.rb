@@ -57,24 +57,68 @@ class Car
 
 end
 
-# TEST CODE
+# user interface
 
-new_car = Car.new("white", 2015, "sudan")
+# create empty array
+# create loop and exit if user types done
+# 	ask user for new car color
+# 	get information
+# 	ask user for model year
+# 	get information and change to integer
+# 	ask user for car_type
+# 	get information
 
-p new_car
 
-new_car.honk
+# 	initialize new car
+# 	add new car to empty array
 
-new_car.fill_gas_tank("regular")
+# print out array
 
-new_car.too_fast?(25, 56)
 
-new_car.too_fast?(25, 12)
+list_of_new_cars = []
 
-p new_car.model_year
+loop do
+	puts "Please create a new car!"
+	
+	puts "What color is your car? (type 'done' to exit)"
+	car_color = gets.chomp
+	
+		break if car_color == "done"
 
-p new_car.color = "red"
+	puts "What is the model year of your car?"
+	car_model_year = gets.chomp.to_i
+	
 
-p new_car
+	puts "What type of car is it?"
+	type_of_car = gets.chomp
+	
 
-p new_car.car_type
+	new_car = Car.new(car_color, car_model_year, type_of_car)
+	list_of_new_cars << new_car
+end
+
+puts "Thank you for making #{list_of_new_cars.length} new cars."
+list_of_new_cars.each do |car|
+	puts "New Car #{list_of_new_cars.index(car) + 1}"
+	puts "Color: #{car.color}"
+	puts "Model Year: #{car.model_year}"
+	puts "Car Type: #{car.car_type}"
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
