@@ -38,12 +38,10 @@
 def create_list(list)
   shopping_list = {}
   grocery_array = list.split(" ")
-  quantity = 1
   grocery_array.map do |item|
-    shopping_list[item] = quantity
+    shopping_list[item] = 1
   end
   print_list(shopping_list)
-  shopping_list
 end
 
 def add_item(list, item_name, quantity = 1)
@@ -73,56 +71,19 @@ end
 
 
 # Driver Code
-
-# groceries = "carrots apples cereal pizza" 
- 
-# grocery_list = create_list(groceries)
-
-# p grocery_list
-
-# p add_item(grocery_list, "oranges")
-
-# p remove_item(grocery_list, "apples")
-
-# p update_quantity(grocery_list, "carrots", 5)
-
-# print_list(grocery_list)
-
-# Test
  
 grocery_list = create_list("carrots apples cereal pizza")
 
-p add_item(grocery_list, "Lemonade", 2)
+add_item(grocery_list, "Lemonade", 2)
 
-p add_item(grocery_list, "Tomatoes", 3)
+add_item(grocery_list, "Tomatoes", 3)
 
-p add_item(grocery_list, "Onions", 1)
+add_item(grocery_list, "Onions", 1)
 
-p add_item(grocery_list, "Ice Cream", 4)
+add_item(grocery_list, "Ice Cream", 4)
 
-p remove_item(grocery_list, "Lemonade")
+remove_item(grocery_list, "Lemonade")
 
-p update_quantity(grocery_list, "Ice Cream", 1)
+update_quantity(grocery_list, "Ice Cream", 1)
 
 print_list(grocery_list)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
