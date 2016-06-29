@@ -87,3 +87,55 @@ remove_item(grocery_list, "Lemonade")
 update_quantity(grocery_list, "Ice Cream", 1)
 
 print_list(grocery_list)
+
+# Reflect 
+
+# What did you learn about pseudocode from working on this challenge?
+ 
+  # That it is really very important. I should have the steps clear for what I need to do so that way the code itself is better and it's quicker. 
+  # Unfortunately I wasted a lot of time because of lack of pseudocoding.
+
+# What are the tradeoffs of using arrays and hashes for this challenge?
+
+  # I liked using a hash so each item (key) had a value, and it can be changed. An array wouldn't let us just change the quantity. 
+  # We used an array to split the string, because an array is easier to manipulate over a string.
+
+# What does a method return?
+  
+  # The last value of the method. That is why we put the list at the end of the methods.
+
+# What kind of things can you pass into methods as arguments?
+
+  # Methods themselves and strings, integers and variables.
+
+# How can you pass information between methods?
+  
+  # By feeding them into as an argument.
+
+# What concepts were solidified in this challenge, and what concepts are still confusing?
+  
+  # I solidified how to write methods and the importance of their return value (not putting a puts at the end)
+  # And the importance of psedocoding.
+  # I still find passing information around to methods a bit confusing.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
