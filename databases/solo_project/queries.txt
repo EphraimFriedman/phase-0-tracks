@@ -1,0 +1,49 @@
+1. Display the information in one table (either table is fine).
+
+command: SELECT * FROM delivery_information; 
+output: 1|Burger King|Manhattan, NY|fruit|68|2|false
+		2|Bagles .co|Bronx, NY|Juice|95|1|false
+		3|Mike's Place|Troy, NY|Nuts|14|2|false
+		4|Arnold's Service Station|Albany, NY|Chips|43|1|false
+		5|Mike's Place|Troy, NY|Soda|81|2|false
+		6|Brooklyn Bottling|Brookyn, NY|coffee|293|1|false
+		7|Bob's Corner|Queens, NY|Beer|57|1|false
+		8|Subway|Staten Island, NY|Crackers|57|2|false
+
+2. Update an item that meets some condition (you can choose a condition that makes sense).
+
+command: UPDATE delivery_information SET delivered="true" WHERE driver=2;
+output: none
+
+3. Display the information in both tables using one query.
+
+command: SELECT * FROM delivery_information, drivers WHERE delivery_information.driver = drivers.id;
+
+output: 1|Burger King|Manhattan, NY|fruit|68|2|true|2|Jose Ovalle
+		2|Bagles .co|Bronx, NY|Juice|95|1|false|1|Eric Miller
+		3|Mike's Place|Troy, NY|Nuts|14|2|true|2|Jose Ovalle
+		4|Arnold's Service Station|Albany, NY|Chips|43|1|false|1|Eric Miller
+		5|Mike's Place|Troy, NY|Soda|81|2|true|2|Jose Ovalle
+		6|Brooklyn Bottling|Brookyn, NY|coffee|293|1|false|1|Eric Miller
+		7|Bob's Corner|Queens, NY|Beer|57|1|false|1|Eric Miller
+		8|Subway|Staten Island, NY|Crackers|57|2|true|2|Jose Ovalle
+
+4. Display a narrower selection of columns (fewer columns than all of them, in other words) from both tables using one query.
+
+command: SELECT delivery_information.company_name, delivery_information.delivered, drivers.driver_name FROM delivery_information JOIN drivers ON delivery_information.driver = drivers.id;
+
+output: Burger King|true|Jose Ovalle
+		Bagles .co|false|Eric Miller
+		Mike's Place|true|Jose Ovalle
+		Arnold's Service Station|false|Eric Miller
+		Mike's Place|true|Jose Ovalle
+		Brooklyn Bottling|false|Eric Miller
+		Bob's Corner|false|Eric Miller
+		Subway|true|Jose Ovalle
+
+5. Delete an item that meets some condition (you can choose a condition that makes sense).
+
+
+command: DELETE FROM delivery_information WHERE company_name="Mike's Place";
+output: none
+
