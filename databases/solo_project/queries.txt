@@ -47,3 +47,24 @@ output: Burger King|true|Jose Ovalle
 command: DELETE FROM delivery_information WHERE company_name="Mike's Place";
 output: none
 
+
+* Use of LEFT JOIN
+
+command: SELECT delivery_information.company_name, delivery_information.num_of_cases, drivers.driver_name FROM drivers LEFT JOIN delivery_information ON drivers.id=delivery_information.driver;
+
+output: Arnold's Service Station|43|Eric Miller
+		Bagles .co|95|Eric Miller
+		Bob's Corner|57|Eric Miller
+		Brooklyn Bottling|293|Eric Miller
+		Burger King|68|Jose Ovalle
+		Subway|57|Jose Ovalle
+		||David Farmer
+
+* USE of RIGHT JOIN
+
+command: SELECT delivery_information.company_name, delivery_information.num_of_cases, drivers.driver_name FROM drivers RIGHT JOIN delivery_information ON drivers.id=delivery_information.driver;
+
+output: Error: RIGHT and FULL OUTER JOINs are not currently supported
+
+
+
