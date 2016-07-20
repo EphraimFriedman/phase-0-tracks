@@ -1,0 +1,21 @@
+* Join all three tables:
+
+command: SELECT * FROM  reviews JOIN businesses ON reviews.business_id=businesses.id JOIN users ON reviews.user_id=users.id;
+
+output: 1|4|fun wedding|1|2|1|Grundy Hollow Wedding Chapel|2|Mandy|Kaling
+		2|3.2|great service|2|3|2|Amir's Towing|3|Angela|Jolie
+		3|4.5|awesome time|3|1|3|The Beagle nightclub|1|Bradford|Pit
+
+* Join specific columns from three tables:
+
+command: SELECT users.first_name, users.last_name, businesses.name, reviews.stars, reviews.comment FROM reviews JOIN users ON reviews.user_id=users.id JOIN businesses ON reviews.business_id= businesses.id;
+
+output: Mandy|Kaling|Grundy Hollow Wedding Chapel|4|fun wedding
+		Angela|Jolie|Amir's Towing|3.2|great service
+		Bradford|Pit|The Beagle nightclub|4.5|awesome time
+
+* Select all information on one business:
+
+command: SELECT * FROM reviews JOIN businesses ON reviews.business_id=businesses.id JOIN users ON reviews.user_id=users.id WHERE business_id=1;
+
+output: 1|4|fun wedding|1|2|1|Grundy Hollow Wedding Chapel|2|Mandy|Kaling
