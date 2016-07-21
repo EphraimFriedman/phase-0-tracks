@@ -36,23 +36,46 @@ def update(database, current_name, catagory, update_info)
 end
 
 def search_by_name(database, name)
-	result = database.execute(<<-SQL 
+	search_result = database.execute(<<-SQL 
 			SELECT * FROM restaurants WHERE name="#{name}"
 		SQL
 		) 
-	puts "----- SEARCH BY NAME -----"
-	result.each do |restaurant|
-			p restaurant
-			puts "#{restaurant["name"]} \t \t #{restaurant["cuisine"]} \t\t #{restaurant["price"]}"
-		end
+	search_result
+	# puts "----- SEARCH BY NAME -----"
+	# result.each do |restaurant|
+	# 		p restaurant
+	# 		puts "#{restaurant["name"]} \t \t #{restaurant["cuisine"]} \t\t #{restaurant["price"]}"
+	# 	end
+end
+
+def search_by_cuisine(database, cuisine)
+	search_result = database.execute(<<-SQL 
+			SELECT * FROM restaurants WHERE cuisine="#{cuisine}"
+		SQL
+		) 
+	search_result
+end
+
+def search_by_price(database, price)
+	search_result = database.execute(<<-SQL 
+			SELECT * FROM restaurants WHERE price< "#{price}"
+		SQL
+		) 
+	search_result
+end
+
+def method_name
+	
 end
 
 
 
-# DRIVER CODE
+# # DRIVER CODE
 add(restaurant_database, "Kingston Pizza", "fast food", 5)
 add(restaurant_database, "Basil", "French", 30)
 # delete(restaurant_database, "Basil")
-# update(restaurant_database, "Kingston Pizza", "price", 7)
-# update(restaurant_database, "Kingston Pizza", "name", "King")
-search_by_name(restaurant_database, "Basil")
+# # update(restaurant_database, "Kingston Pizza", "price", 7)
+# # update(restaurant_database, "Kingston Pizza", "name", "King")
+# search_by_name(restaurant_database, "Basil")
+# p search_by_cuisine(restaurant_database, "fast food")
+p search_by_price(restaurant_database, 20)
