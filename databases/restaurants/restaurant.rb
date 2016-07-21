@@ -2,7 +2,6 @@
 require 'sqlite3'
 
 # create database
-
 restaurant_database = SQLite3::Database.new("restaurants.db")
 
 # create table 
@@ -14,8 +13,12 @@ create_table = <<-SQL
 		price INTEGER
 	)
 SQL
-
 restaurant_database.execute(create_table)
 
+def add(database, name, cuisine, price)
+	database.execute("INSERT INTO restaurants (name, cuisine, price) VALUES (?,?,?)", [name, cuisine, price])
+end
 
-
+# DRIVER CODE
+# add(restaurant_database, "Kingston Pizza", "fast food", 5)
+# add(restaurant_database, "Basil", "French", 30)
