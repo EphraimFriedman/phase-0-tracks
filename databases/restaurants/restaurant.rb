@@ -19,6 +19,16 @@ def add(database, name, cuisine, price)
 	database.execute("INSERT INTO restaurants (name, cuisine, price) VALUES (?,?,?)", [name, cuisine, price])
 end
 
+
+
+def delete(database, name)
+	database.execute(<<-SQL 
+		DELETE FROM restaurants WHERE name="Basil" 
+		SQL
+		)
+end
+
 # DRIVER CODE
 # add(restaurant_database, "Kingston Pizza", "fast food", 5)
 # add(restaurant_database, "Basil", "French", 30)
+# delete(restaurant_database, "Basil")
