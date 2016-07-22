@@ -18,6 +18,7 @@ restaurant_database.execute(create_table)
 # add restaurant method
 def add(database, name, cuisine, price)
 	database.execute("INSERT INTO restaurants (name, cuisine, price) VALUES (?,?,?)", [name, cuisine, price])
+	database
 end
 
 # delete restaurant method
@@ -26,6 +27,7 @@ def delete(database, name)
 			DELETE FROM restaurants WHERE name="#{name}"
 		SQL
 		)
+	database
 end
 
 # update restaurant method
@@ -34,6 +36,7 @@ def update(database, current_name, catagory, update_info)
 		UPDATE restaurants SET "#{catagory}"="#{update_info}" WHERE name="#{current_name}" 
 		SQL
 		)	
+	database
 end
 
 # search by name method
@@ -78,12 +81,14 @@ def print(result, search_by=0)
 			# p restaurant
 			puts "#{restaurant["name"].ljust(25)} #{restaurant["cuisine"].ljust(20)} $ #{restaurant["price"]}.00 \n\n"
 		end
+	result
 end
 
 # print entire database method
 def print_list(database)
 	full_database = database.execute("SELECT * FROM restaurants")
 	print(full_database)
+	database
 end
 
 
@@ -108,19 +113,34 @@ end
 
 #welcome message method
 def welcome_message
-	puts "Welcome to the restaurant finder!".upcase.center(80)
-	puts ("-" * 40).center(80)
+	puts "Welcome to the restaurant finder!".upcase.center(120)
+	puts (("-" * 120) + "\n\n").center(120)
 end
 
 #goodbye message method
 
 def goodbye_message
-	puts ("-" * 50).center(80)
-	puts "thank you for using the restaurant finder!".upcase.center(80)
-	puts "enjoy your favorite restaurant!".upcase.center(80)
+	puts ("-" * 120).center(120)
+	puts "thank you for using the restaurant finder!".upcase.center(120)
+	puts "enjoy your favorite restaurant!".upcase.center(120)
 end
 
-
+def launch(database)
+	welcome_message
+	loop do 
+		puts "Would you like to manage, search or print your favorite restaurants? (Type 'manage', 'search','print' or 'exit' to quit)"
+		action = gets.chomp.downcase
+		break if action == "exit" 
+		if action == "manage"
+			user_manager(database)
+		elsif action == "search"
+			user_search(database)
+		elsif action == "print"
+				print_list(database)
+		end
+	end
+	goodbye_message
+end
 
 # puts "Would you like to manage, search or print your favorite restaurants? (Please type manage, search or print)"
 
@@ -131,42 +151,11 @@ def user_manager(database)
 	puts "Would you like to add, update or delete a restaurant? (Please type 'add', 'update', 'delete')"
 	manage_action = gets.chomp.downcase
 	if manage_action == "add"
-		puts "What is the name of the new restaurant?"
-		new_restaurant_name = gets.chomp
-		puts "What is the cuisine?"
-		new_restaurant_cuisine = gets.chomp
-		puts "What is the average price of a meal?"
-		new_restaurant_price = gets.chomp.to_i
-
-		add(database, new_restaurant_name, new_restaurant_cuisine, new_restaurant_price)
-		puts "your newly added restaurant is: \n\n".upcase.center(60)
-		search_by_name(database, new_restaurant_name)
-	
+		user_add(database)
 	elsif manage_action == "update"
-		puts "Which restaurant would you like to update?"
-		restaurant_to_update = gets.chomp
-		puts "Would you like to update the name, cuisine or price?"
-		catagory_update = gets.chomp
-		puts "Please type in the update."
-		updated_info = gets.chomp
-			if updated_info.is_a?(Integer)
-				updated_info.to_i
-			end
-
-		update(database, restaurant_to_update, catagory_update, updated_info)
-		puts "your updated restaurant is: \n\n".upcase.center(60)
-			if catagory_update == "name"
-				search_by_name(database, updated_info)
-			else
-				search_by_name(database, restaurant_to_update)
-			end
-
-		elsif manage_action == "delete"
-			puts "Which restaurant would you like to delete?(Please type in the name of restaurant)"
-			delete_restaurant_name = gets.chomp
-			
-			delete(database, delete_restaurant_name)
-			puts "#{delete_restaurant_name} has been removed from your favorite restaurant list.".upcase
+		user_update(database)
+	elsif manage_action == "delete"
+		user_delete(database)
 	end
 end
 
@@ -189,6 +178,46 @@ def user_search(database)
 	end
 end
 
+def user_add(database)
+	puts "What is the name of the new restaurant?"
+		new_restaurant_name = gets.chomp
+		puts "What is the cuisine?"
+		new_restaurant_cuisine = gets.chomp
+		puts "What is the average price of a meal?"
+		new_restaurant_price = gets.chomp.to_i
+
+		add(database, new_restaurant_name, new_restaurant_cuisine, new_restaurant_price)
+		puts "your newly added restaurant is: \n\n".upcase.center(60)
+		search_by_name(database, new_restaurant_name)
+end
+
+def user_update(database)
+		puts "Which restaurant would you like to update?"
+		restaurant_to_update = gets.chomp
+		puts "Would you like to update the name, cuisine or price?"
+		catagory_update = gets.chomp
+		puts "Please type in the update."
+		updated_info = gets.chomp
+			if updated_info.is_a?(Integer)
+				updated_info.to_i
+			end
+
+		update(database, restaurant_to_update, catagory_update, updated_info)
+		puts "your updated restaurant is: \n\n".upcase.center(60)
+			if catagory_update == "name"
+				search_by_name(database, updated_info)
+			else
+				search_by_name(database, restaurant_to_update)
+			end
+end
+
+def user_delete(database)
+	puts "Which restaurant would you like to delete?(Please type in the name of restaurant)"
+			delete_restaurant_name = gets.chomp
+			
+			delete(database, delete_restaurant_name)
+			puts "--#{delete_restaurant_name} has been removed from your favorite restaurant list.--\n\n".upcase
+end
 
 
 # TEST
@@ -200,6 +229,7 @@ end
 # user_manager(restaurant_database)
 # print_list(restaurant_database)
 # user_search(restaurant_database)
+launch(restaurant_database)
 
 
 
