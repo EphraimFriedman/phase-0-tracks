@@ -14,6 +14,7 @@ create_table = <<-SQL
 	)
 SQL
 restaurant_database.execute(create_table)
+
 # add restaurant method
 def add(database, name, cuisine, price)
 	database.execute("INSERT INTO restaurants (name, cuisine, price) VALUES (?,?,?)", [name, cuisine, price])
@@ -35,45 +36,54 @@ def update(database, current_name, catagory, update_info)
 		)	
 end
 
+# search by name method
 def search_by_name(database, name)
 	search_result = database.execute(<<-SQL 
-			SELECT * FROM restaurants WHERE name="#{name}"
+			SELECT * FROM restaurants WHERE name LIKE "#{name}%"
 		SQL
 		) 
-	print_search(search_result)
-	
+	print(search_result, "name")	
 end
 
+#search by cuisine method
 def search_by_cuisine(database, cuisine)
 	search_result = database.execute(<<-SQL 
-			SELECT * FROM restaurants WHERE cuisine="#{cuisine}"
+			SELECT * FROM restaurants WHERE cuisine LIKE "#{cuisine}%"
 		SQL
 		) 
-	print_search(search_result)
+	print(search_result, "cuisine")
 end
 
+# search by price method
 def search_by_price(database, price)
 	search_result = database.execute(<<-SQL 
 			SELECT * FROM restaurants WHERE price< "#{price}"
 		SQL
 		) 
-	print_search(search_result)
+	print(search_result, "price")
 end
 
-def print_search(result)
-	puts "----- SEARCH BY NAME -----"
+# print result method
+def print(result, search_by=0)
+	options = ["name", "cuisine", "price"]
+	if options.include?(search_by)
+		puts "favorite restaurants by #{search_by}".upcase.center(60)
+		else
+		puts "favorite restaurants".upcase.center(60)
+	end
+	puts ("<<" + ("-" * 20) + ">>").center(60)
+	puts "name".upcase.center(25) + "cuisine".upcase.center(15) + "price".upcase.rjust(15)
+	puts "-" * 60 	
 	result.each do |restaurant|
 			# p restaurant
-			puts "#{restaurant["name"]} \t \t #{restaurant["cuisine"]} \t\t #{restaurant["price"]}"
+			puts "#{restaurant["name"].ljust(25)} #{restaurant["cuisine"].ljust(20)} $ #{restaurant["price"]}.00 \n\n"
 		end
 end
 
+# print entire database method
 def print_list(database)
-	full_database = database.execute("SELECT * FROM restaurants")	
-	full_database.each do |restaurant|
-			# p restaurant
-			puts "#{restaurant["name"]} \t \t #{restaurant["cuisine"]} \t\t #{restaurant["price"]}"
-		end
+	full_database = database.execute("SELECT * FROM restaurants")
+	print(full_database)
 end
 
 
@@ -85,11 +95,11 @@ end
 # # # update(restaurant_database, "Kingston Pizza", "price", 7)
 # # # update(restaurant_database, "Kingston Pizza", "name", "King")
 
-# search_by_name(restaurant_database, "Basil")
+search_by_name(restaurant_database, "Bas")
 
 
-# search_by_cuisine(restaurant_database, "fast food")
+search_by_cuisine(restaurant_database, "fas")
 
-# search_by_price(restaurant_database, 20)
+search_by_price(restaurant_database, 20)
 
 print_list(restaurant_database)
