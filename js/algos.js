@@ -60,7 +60,9 @@ var	random_string = "qwertyuiopasdfghjk"
 
 
 for (var i = 0; i < number; i++) {
-	var new_word = random_string.substring(Math.floor(Math.random() * 10 + 1), Math.floor(Math.random() * 10 + 1))
+	random_munber_1 = Math.floor(Math.random() * 10 + 1)
+	random_munber_2 = Math.floor(Math.random() * 10 + 1)
+	var new_word = random_string.substring(random_munber_1, random_munber_2)
 	array_of_random_words.push(new_word)
 }
 return array_of_random_words
@@ -77,8 +79,8 @@ console.log(find_longest_word(["one", "two", "three", "four"]))
 
 
 // test matching object function
-h1 = {name: "bob", age: 27, food: "fast"}
-h2 = {name: "bob", age: 23, boot: "fast"}
+var h1 = {name: "bob", age: 27, food: "fast"}
+var h2 = {name: "bob", age: 23, boot: "fast"}
 
 console.log(matching_object(h1, h2))
 
