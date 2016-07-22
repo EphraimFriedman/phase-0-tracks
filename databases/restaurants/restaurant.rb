@@ -171,8 +171,22 @@ def user_manager(database)
 end
 
 
-def user_search
-	
+def user_search(database)
+	puts "Would you like to search by name, cuisine or price?(Please type 'name', 'cuisine' or 'price')"
+	search_action = gets.chomp.downcase
+	if search_action == "name"
+		puts "What is the name of the restaurant you want to find? (Type the beginning few letters)"
+		name_search = gets.chomp
+		search_by_name(database, name_search)	
+	elsif search_action == "cuisine"
+		puts "Which cuisine would you like to find? (Type the beginning few letters)"
+		cuisine_search = gets.chomp
+		search_by_cuisine(database, cuisine_search)
+	elsif search_action == "price"
+		puts "Find a restaurant under your given price. How much are you willing to spend?"
+		price_search = gets.chomp.to_i
+		search_by_price(database, price_search)
+	end
 end
 
 
@@ -183,9 +197,9 @@ end
 # goodbye_message
 
 
-user_manager(restaurant_database)
+# user_manager(restaurant_database)
 # print_list(restaurant_database)
-
+# user_search(restaurant_database)
 
 
 
