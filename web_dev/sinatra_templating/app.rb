@@ -25,3 +25,11 @@ post '/students' do
 end
 
 # add static resources
+
+# add search by campus option
+
+get "/search" do
+	@search = params["search"]
+	@students = db.execute("SELECT * FROM students WHERE campus=? OR name Like '#{@search}%'", [@search])
+	erb :campus_search
+end

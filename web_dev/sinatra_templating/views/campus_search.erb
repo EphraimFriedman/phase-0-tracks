@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>search by campus</title>
+</head>
+<body>
+<h1>Search By Name or Campus</h1>
+<form action="/search" method="get">
+	<label>Search:</label>
+	<input type="text" name="search" placeholder="Name or Campus">
+	</form>
+<h1>Searching By <%= @search %></h1>
+<ol>
+	<% @students.each do |student| %>
+		<li><%= student['name'] %></li>
+	<% end %>
+</ol>
+
+</body>
+</html>
